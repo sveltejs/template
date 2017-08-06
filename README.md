@@ -23,7 +23,7 @@ cd svelte-app
 npm install
 ```
 
-...then start Rollup:
+...then start [Rollup](https://rollupjs.org):
 
 ```bash
 npm run dev
@@ -63,4 +63,4 @@ Then, from within your project folder:
 ```bash
 npm run build
 surge public
-```# template
+```
