@@ -7,13 +7,17 @@ import uglify from 'rollup-plugin-uglify';
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-	entry: 'src/main.js',
-	dest: 'public/bundle.js',
-	format: 'iife',
-	moduleName: 'app',
-	sourceMap: true,
+	input: 'src/main.js',	
+	output: {
+		sourcemap: true,	
+		format: 'iife',
+		file: 'public/bundle.js'
+	},
+	name: 'app',
 	plugins: [
 		svelte({
+			// enable run-time checks when not in production
+			dev: !production,
 			// we'll extract any component CSS out into
 			// a separate file — better for performance
 			css: css => {
