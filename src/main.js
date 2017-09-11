@@ -1,4 +1,4 @@
-import App from './App.html';
+import { App } from './components';
 
 const app = new App({
 	target: document.body,
