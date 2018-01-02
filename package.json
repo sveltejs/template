@@ -2,13 +2,14 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "devDependencies": {
-    "rollup": "^0.52.0",
+    "rollup": "^0.53.2",
     "rollup-plugin-buble": "^0.18.0",
     "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-svelte": "^3.2.0",
+    "rollup-plugin-svelte": "^4.0.0",
     "rollup-plugin-uglify": "^2.0.1",
-    "serve": "^6.4.1"
+    "serve": "^6.4.3",
+    "svelte": "^1.50.0"
   },
   "scripts": {
     "build": "rollup -c",
