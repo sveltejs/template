@@ -23,6 +23,9 @@ export default {
 			css: css => {
 				css.write('public/bundle.css');
 			},
+			
+			// enable https://svelte.technology/guide#state-management
+			store: true,
 
 			// this results in smaller CSS files
 			cascade: false
