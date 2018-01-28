@@ -11,9 +11,9 @@ export default {
 	output: {
 		sourcemap: true,	
 		format: 'iife',
+		name: 'app',
 		file: 'public/bundle.js'
 	},
-	name: 'app',
 	plugins: [
 		svelte({
 			// enable run-time checks when not in production
