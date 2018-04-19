@@ -7,9 +7,9 @@ import uglify from 'rollup-plugin-uglify';
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-	input: 'src/main.js',	
+	input: 'src/main.js',
 	output: {
-		sourcemap: true,	
+		sourcemap: true,
 		format: 'iife',
 		name: 'app',
 		file: 'public/bundle.js'
@@ -22,13 +22,7 @@ export default {
 			// a separate file — better for performance
 			css: css => {
 				css.write('public/bundle.css');
-			},
-
-			// enable https://svelte.technology/guide#state-management
-			store: true,
-
-			// this results in smaller CSS files
-			cascade: false
+			}
 		}),
 
 		// If you have external dependencies installed from
