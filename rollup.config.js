@@ -39,7 +39,7 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), transpile and minify
-		production && buble({ exclude: 'node_modules/**' }),
+		production && buble({ include: ['src/**', 'node_modules/svelte/shared.js'] }),
 		production && uglify()
 	]
 };
