@@ -8,13 +8,14 @@
     "rollup-plugin-node-resolve": "^3.0.3",
     "rollup-plugin-svelte": "^4.2.1",
     "rollup-plugin-terser": "^1.0.1",
-    "serve": "^9.4.2",
+    "sirv-cli": "^0.2.0",
     "svelte": "^2.10.1"
   },
   "scripts": {
     "build": "rollup -c",
     "autobuild": "rollup -c -w",
-    "dev": "run-p start autobuild",
-    "start": "serve public"
+    "dev": "run-p start:dev autobuild",
+    "start": "sirv public",
+    "start:dev": "sirv public --dev"
   }
 }
