@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "devDependencies": {
     "npm-run-all": "^4.1.3",
-    "rollup": "^0.64.1",
-    "rollup-plugin-commonjs": "^9.1.5",
-    "rollup-plugin-node-resolve": "^3.0.3",
-    "rollup-plugin-svelte": "^4.2.1",
-    "rollup-plugin-terser": "^1.0.1",
-    "sirv-cli": "^0.2.0",
-    "svelte": "^2.10.1"
+    "rollup": "^0.66.2",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-svelte": "^4.3.1",
+    "rollup-plugin-terser": "^3.0.0",
+    "sirv-cli": "^0.2.2",
+    "svelte": "^2.13.5"
   },
   "scripts": {
     "build": "rollup -c",
