@@ -6,10 +6,10 @@
     "rollup": "^0.66.2",
     "rollup-plugin-commonjs": "^9.1.8",
     "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-svelte": "^4.3.1",
+    "rollup-plugin-svelte": "^4.4.0",
     "rollup-plugin-terser": "^3.0.0",
     "sirv-cli": "^0.2.2",
-    "svelte": "^2.13.5"
+    "svelte": "^3.0.0-alpha1"
   },
   "scripts": {
     "build": "rollup -c",
