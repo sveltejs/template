@@ -11,6 +11,16 @@
 </head>
 
 <body>
+	  <main>
+			<!-- main page content -->
+		</main>
+
+	<!-- 
+		Note: 
+		If you put this <script> tag referencing bundle.js above elements referenced by Svelte components as a target, 
+		you'll get an error about 'target' being a required function. This is because Svelte is trying to
+		find the element specified for a target (for ex, document.querySelector('main')) before the browser knows it exists.
+	-->
 	<script src='bundle.js'></script>
 </body>
 </html>
