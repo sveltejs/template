@@ -9,7 +9,7 @@
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^4.0.4",
     "sirv-cli": "^0.2.3",
-    "svelte": "^3.0.0-beta.7"
+    "svelte": "^3.0.0-beta.8"
   },
   "scripts": {
     "build": "rollup -c",
