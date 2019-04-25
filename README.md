@@ -9,9 +9,8 @@ This is a project template for [Svelte](https://svelte.technology) apps. It live
 To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
 
 ```bash
-npm install -g degit # you only need to do this once
+npx degit sveltejs/template-webpack svelte-app
 
-degit sveltejs/template svelte-app
 cd svelte-app
 ```
 
