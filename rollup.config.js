@@ -14,6 +14,9 @@ export default {
 		name: 'app',
 		file: 'public/bundle.js'
 	},
+	watch: {
+		chokidar: false
+	},
 	plugins: [
 		svelte({
 			// enable run-time checks when not in production
