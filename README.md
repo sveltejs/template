@@ -64,5 +64,5 @@ Then, from within your project folder:
 
 ```bash
 npm run build
-surge public
+surge dist
 ```
