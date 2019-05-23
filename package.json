@@ -5,6 +5,7 @@
     "npm-run-all": "^4.1.5",
     "rollup": "^1.10.1",
     "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-copy": "^2.0.1",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-node-resolve": "^4.2.3",
     "rollup-plugin-svelte": "^5.0.3",
@@ -13,10 +14,11 @@
     "svelte": "^3.0.0"
   },
   "scripts": {
-    "build": "rollup -c",
-    "autobuild": "rollup -c -w",
+    "autobuild": "run-s clean && rollup -c -w",
+    "build": "run-s clean && rollup -c",
+    "clean": "rm -rf dist",
     "dev": "run-p start:dev autobuild",
-    "start": "sirv public",
-    "start:dev": "sirv public --dev"
+    "start": "sirv dist",
+    "start:dev": "sirv dist --dev"
   }
 }

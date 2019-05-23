@@ -3,6 +3,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import copy from 'rollup-plugin-copy';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -12,7 +13,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/bundle.js'
+		file: 'dist/bundle.js'
 	},
 	plugins: [
 		svelte({
@@ -21,7 +22,7 @@ export default {
 			// we'll extract any component CSS out into
 			// a separate file — better for performance
 			css: css => {
-				css.write('public/bundle.css');
+				css.write('dist/bundle.css');
 			}
 		}),
 
@@ -33,9 +34,17 @@ export default {
 		resolve(),
 		commonjs(),
 
+		copy({
+		  	targets: [
+				'public/index.html',
+				'public/global.css'
+		  	],
+		  	outputFolder: 'dist'
+		}),
+
 		// Watch the `public` directory and refresh the
 		// browser on changes when not in production
-		!production && livereload('public'),
+		!production && livereload('dist'),
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
