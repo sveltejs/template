@@ -16,7 +16,7 @@
   "scripts": {
     "autobuild": "run-s clean && rollup -c -w",
     "build": "run-s clean && rollup -c",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist/*",
     "dev": "run-p start:dev autobuild",
     "start": "sirv dist",
     "start:dev": "sirv dist --dev"
