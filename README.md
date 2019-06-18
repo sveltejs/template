@@ -47,6 +47,7 @@ npm install -g now
 Then, from within your project folder:
 
 ```bash
+cd public
 now
 ```
 
