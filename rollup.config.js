@@ -41,8 +41,10 @@ export default {
 		!production && livereload('public'),
 
 		// If we're building for production (npm run build
-		// instead of npm run dev), minify
-		production && terser()
+		// instead of npm run dev), obfuscate
+		production && terser({
+			compress: false
+		})
 	],
 	watch: {
 		clearScreen: false
