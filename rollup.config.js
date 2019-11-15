@@ -13,7 +13,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/bundle.js'
+		file: 'public/build/bundle.js'
 	},
 	plugins: [
 		svelte({
@@ -22,7 +22,7 @@ export default {
 			// we'll extract any component CSS out into
 			// a separate file — better for performance
 			css: css => {
-				css.write('public/bundle.css');
+				css.write('public/build/bundle.css');
 			}
 		}),
 
