@@ -2,8 +2,8 @@ import svelte from 'rollup-plugin-svelte';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
+import serve from 'rollup-plugin-serve';
 import { terser } from 'rollup-plugin-terser';
-import rollup_start_dev from './rollup_start_dev';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -37,12 +37,14 @@ export default {
 		}),
 		commonjs(),
 
-		// In dev mode, call `npm run start:dev` once
-		// the bundle has been generated
-		!production && rollup_start_dev,
+		// In dev mode, serve on port 5000...
+		!production && serve({
+			contentBase: 'public',
+			port: 5000,
+			historyApiFallback: '/index.html'
+		}),
 
-		// Watch the `public` directory and refresh the
-		// browser on changes when not in production
+		// ...and reload when the app changes
 		!production && livereload('public'),
 
 		// If we're building for production (npm run build
