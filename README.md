@@ -61,7 +61,7 @@ Then, from within your project folder:
 
 ```bash
 cd public
-now
+now deploy --name my-project
 ```
 
 As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
@@ -78,5 +78,5 @@ Then, from within your project folder:
 
 ```bash
 npm run build
-surge public
+surge public my-project.surge.sh
 ```
