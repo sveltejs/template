@@ -53,7 +53,11 @@ button {
 	outline: none;
 }
 
-button:active {
+button:disabled {
+	color: #999;
+}
+
+button:not(:disabled):active {
 	background-color: #ddd;
 }
 
