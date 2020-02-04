@@ -2,20 +2,40 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "scripts": {
+    "test": "jest src",
+    "test:watch": "npm run test -- --watch",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.8.4",
     "@rollup/plugin-commonjs": "^11.0.0",
     "@rollup/plugin-node-resolve": "^7.0.0",
+    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/svelte": "^1.11.0",
+    "jest": "^25.1.0",
     "rollup": "^1.20.0",
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",
-    "svelte": "^3.0.0"
+    "svelte": "^3.0.0",
+    "svelte-jester": "^1.0.3"
   },
   "dependencies": {
     "sirv-cli": "^0.4.4"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.svelte$": "svelte-jester"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "svelte"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ]
   }
 }
