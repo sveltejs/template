@@ -1,0 +1,66 @@
+/* purgecss start ignore */
+  @tailwind base;
+  @tailwind components;
+  /* purgecss end ignore */
+  @tailwind utilities;
+
+  h1,
+.h1 {
+  @apply text-5xl font-semibold;
+  letter-spacing: -1.5px;
+}
+
+h2,
+.h2 {
+  @apply text-4xl font-medium;
+  letter-spacing: -0.5px;
+}
+
+h3,
+.h3 {
+  @apply text-3xl font-medium;
+  letter-spacing: 0px;
+}
+
+h4,
+.h4 {
+  @apply text-2xl font-medium;
+  letter-spacing: 0.25px;
+}
+
+h5,
+.h5 {
+  @apply text-xl font-medium;
+  letter-spacing: 0px;
+}
+
+h6,
+.h6 {
+  @apply text-base font-medium;
+  letter-spacing: 0.15px;
+}
+
+.subtitle-1 {
+  @apply text-base;
+  letter-spacing: 0.15px;
+}
+
+.subtitle-2 {
+  @apply text-base text-sm font-medium;
+  letter-spacing: 0.15px;
+}
+
+.body-1 {
+  @apply text-base;
+  letter-spacing: 0.5px;
+}
+
+.body-2 {
+  @apply text-sm;
+  letter-spacing: 0.25px;
+}
+
+.navi > li {
+@apply pl-3 cursor-pointer;
+text-indent: -0.5rem;
+}
