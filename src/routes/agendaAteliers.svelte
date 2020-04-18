@@ -1,4 +1,6 @@
 <script>
+import {onDestroy} from 'svelte'
+import {buildSiteAtelier} from './../utils/updateNetlify.js'
 import FormAtelier from './../components/FormAtelier.svelte'
 import Dialog from '../components/Dialog.svelte';
 import Busy from '../components/busy.svelte'
@@ -132,6 +134,11 @@ onMount(async ()=> {
     });
     calendar.render();
     majListeAteliers()
+})
+
+onDestroy(()=> {
+    console.log('destroy')
+    buildSiteAtelier()
 })
 
 </script>

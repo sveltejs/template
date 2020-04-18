@@ -2,7 +2,9 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "scripts": {
-    "build": "rollup -c",
+    "build": "NODE_ENV='production' npm-run-all --parallel build:css build:js",
+    "build:css": "postcss src/css/tailwind.css -o public/css/styles.css",
+    "build:js": "rollup -c",
     "watch:svelte": "rollup -c -w",
     "dev": "npm-run-all --parallel watch:css watch:svelte",
     "start": "sirv public --single",

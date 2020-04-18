@@ -1,7 +1,7 @@
 /* purgecss start ignore */
   @tailwind base;
   @tailwind components;
-  /* purgecss end ignore */
+/* purgecss end ignore */
   @tailwind utilities;
 
   h1,
@@ -120,7 +120,7 @@ text-indent: -0.5rem;
     @apply text-gray-900 bg-rougeLBF border-rougeLBF;
 }
 
-//fullCalendar
+/* fullCalendar */
 .fc-unthemed td.fc-today {
   @apply bg-vertLBFT;
 }
