@@ -1,6 +1,8 @@
 <script>
 import { createEventDispatcher } from "svelte";
 import { get_current_component } from "svelte/internal"
+import Fa from 'svelte-fa'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 const component = get_current_component()
     const svelteDispatch = createEventDispatcher()
     const dispatch = (name, detail) => {
@@ -13,11 +15,15 @@ const actionBouton = () => {
     }
 
 export let occupe = false;
+export let succes = false;
 export let couleur = "text-bleuLBF border-bleuLBF"
 export let couleurSVG = "text-bleuLBF-500 bg-bleuLBF-500"
+export let largeur = "w-32"
+export let noBorder = false;
+export let disabled = false;
 
-$: border = occupe?" cursor-default":" border-2 cursor-pointer"
-$: classBouton = "w-24 h-10 mx-1 px-1 my-auto rounded text-base font-medium " + couleur + border
+$: border = occupe || disabled || succes ?"cursor-default":noBorder?"cursor-pointer":"border-2 cursor-pointer"
+$: classBouton = "h-10 mx-1 px-1 my-auto rounded text-base font-medium focus:outline-none " + couleur + " " + border + " " + largeur
 const classSVG = "fill-current stroke-current h-8 w-8 mx-auto mt-2" + couleurSVG
 
 </script>
@@ -36,6 +42,10 @@ const classSVG = "fill-current stroke-current h-8 w-8 mx-auto mt-2" + couleurSVG
                 </circle>
             </g>
         </svg>
+    {:else if succes}
+        <div class={couleur}>
+            <Fa icon={faCheck} size="2x" class="mx-auto"/>
+        </div>
     {:else}
         <slot class="mx-auto">un bouton</slot>
     {/if}

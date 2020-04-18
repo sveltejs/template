@@ -1,4 +1,5 @@
 module.exports = {
+
   theme: {
     minWidth: {
         '0': '0',
@@ -36,6 +37,7 @@ module.exports = {
       orangeLBFT: "#ee732e55",
       bleuLBF: "#4bbcc4",
       vertLBF: "#93c021",
+      vertLBFT: "#93c02155",
       rougeLBF: "#e02933",
       jauneLBF: "#fcc62d",
       lbforange: {
@@ -63,7 +65,6 @@ module.exports = {
         800: "#34787b",
         900: "#285554"
       },
-
       lbfvert: {
         50: "#f3f7e6",
         100: "#e0ecc0",
@@ -75,6 +76,18 @@ module.exports = {
         700: "#6d9d0b",
         800: "#588900",
         900: "#316800"
+      },
+      lbfvertt: {
+        50: "#f3f7e655",
+        100: "#e0ecc055",
+        200: "#cbdf9855",
+        300: "#b5d36d55",
+        400: "#a4c94a55",
+        500: "#93C02155",
+        600: "#6d9d0b55",
+        700: "#6d9d0b55",
+        800: "#58890055",
+        900: "#31680055"
       },
 
       lbfrouge: {
@@ -132,6 +145,7 @@ module.exports = {
       "4": "1rem",
       "5": "1.25rem",
       "6": "1.5rem",
+      "7": "1.75rem",
       "8": "2rem",
       "10": "2.5rem",
       "12": "3rem",
@@ -144,6 +158,11 @@ module.exports = {
       "48": "12rem",
       "56": "14rem",
       "64": "16rem"
+    },
+    inset: {
+        '0': 0,
+        'auto': 'auto',
+        '16': '4rem',
     },
     zIndex: {
       "0": 0,
@@ -178,6 +197,5 @@ module.exports = {
     backgroundColor: ["hover", "focus", "disabled"],
     display: ["responsive", "disabled"],
     maxWidth: ["responsive"]
-  },
-  plugins: [require("@tailwindcss/custom-forms")]
+  }
 };

@@ -3,7 +3,7 @@ import {onMount, tick } from 'svelte'
 import { auth } from "./../stores/auth.js"
 import { user } from "./../stores/user.js"
 import { urlImage } from './../utils/urlImages.js'
-import Dialog from './../smelte/src/components/Dialog';
+import Dialog from './Dialog.svelte';
 import Bouton from './Button/Button.svelte';
 import Fa from 'svelte-fa'
 import { faCircle, faDotCircle, faTrashAlt } from '@fortawesome/free-regular-svg-icons'
@@ -32,6 +32,7 @@ export let options = [
 export let altImage = "Une illustration";
 export let espace = "Latelier";
 export let typeIllustration = "Atelier"
+export let classImage = "";
 const optionsULRThumbs =  [
         { height: '80', width: '80', qualite: '60', cropType: 'fill' }
       ]
@@ -45,7 +46,6 @@ async function getListeIllustrations() {
             typeIllustration: typeIllustration
         }
         listeIllustrations = await listeIllustrationsByEspace($auth, $user.estAdmin, variables)
-        console.log('illu', listeIllustrations)
     };
 
 $: if ($auth && $user) {
@@ -53,7 +53,6 @@ $: if ($auth && $user) {
     }
 
 async function onUploadDone(event) {
-    console.log('filemena', event.detail.fileProps)
     var variables = {
             espace: espace,
             typeIllustration: typeIllustration, 
@@ -65,7 +64,6 @@ async function onUploadDone(event) {
 
 async function effaceImage() {
     flagSuppressionImage = true
-    console.log('suppressionImageId', suppressionImageId)
     var variables={
         imageId: suppressionImageId
     }
@@ -83,9 +81,9 @@ async function effaceImage() {
 
 </script>
 
-<img src={urlImage(nomImage, options)} alt={altImage}} on:click={() => showDialog = true}/>
+<img src={urlImage(nomImage, options)} alt={altImage}} on:click={() => showDialog = true} class={"cursor-pointer " + classImage} />
 
-<Dialog bind:value={showDialog} opacity="0.5" class="items-center z-50 rounded bg-gray-900 dark:bg-dark-400 p-4 elevation-4 max-w-5/6">
+<Dialog bind:visible={showDialog} >
     <h4 slot="title">Choix Illustration</h4>
     <div class="flex flex-column flex-wrap justify-around mb-2">
         <div  on:click={() => {nomImage = "logoLBFSeul_a1t4af.png"}} class="p-1">
@@ -124,7 +122,7 @@ async function effaceImage() {
   </div>
 </Dialog>
 <!-- confirmation effacer-->
-<Dialog bind:value={flagConfirmationEffacer} opacity="0.5" class="items-center z-50 rounded bg-gray-900 dark:bg-dark-400 p-4 elevation-4 max-w-5/6">
+<Dialog bind:visible={flagConfirmationEffacer} >
 <h4 slot="title">Confirmation</h4>
 <p>Confirmer la suppression de l'image</p>
   <div slot="actions" class="flex flex-column">

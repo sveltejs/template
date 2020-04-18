@@ -1,70 +1,51 @@
-export const tableFr = {
+export const dateFr = {
     mois: [
-    "janvier",
-    "février",
-    "mars",
-    "avril",
-    "mai",
-    "juin",
-    "juillet",
-    "août",
-    "septembre",
-    "octobre",
-    "novembre",
-    "décembre"
-],
-moisShort:  [
-    "jan.",
-    "fév.",
-    "mars",
-    "avr.",
-    "mai",
-    "juin",
-    "juill.",
-    "août",
-    "sept.",
-    "oct.",
-    "nov.",
-    "déc."
+    ["janvier", "jan."],
+    ["février", "fév."],
+    ["mars", "mars"],
+    ["avril", "avr."],
+    ["mai", "mai"],
+    ["juin", "juin"],
+    ["juillet", "juil."],
+    ["août", "août"],
+    ["septembre", "sept."],
+    ["octobre", "oct."],
+    ["novembre", "nov."],
+    ["décembre", "déc."]
 ],
 jours: [
-    "dimanche",
-    "lundi",
-    "mardi",
-    "mercredi",
-    "jeudi",
-    "vendredi",
-    "samedi"
+    ["dimanche", "dim."],
+    ["lundi", "lun."],
+    ["mardi", "mar."],
+    ["mercredi", "mer."],
+    ["jeudi", "jeu."],
+    ["vendredi", "ven."],
+    ["samedi", "sam."]
 ]
 }
 
 export function getHoraire(value){
-    //var d = DateTime.fromISO(value).setZone("Europe/Paris");
     var d = new Date(value)
     var minute = d.getMinutes() == 0 ? '00': d.getMinutes();
     return d.getHours() + "h" + minute;
 }
 
 export function getJour(value){
-    //var d = DateTime.fromISO(value).setZone("Europe/Paris");
     var d = new Date(value)
-    console.log('day', d)
-    return d.getDay();
+    return d.getDate();
 }
 
 export function getMoisShort(value) {
     var d = (new Date(value)).getMonth();
-    return tableFr.moisShort[d];
+    return dateFr.mois[d][1];
 }
 
 export function dateInscription(debut, fin) {
-    //var leDebut = DateTime.fromISO(debut).setZone("Europe/Paris"); 
-    //var laFin = DateTime.fromISO(fin).setZone("Europe/Paris");
     var leDebut = new Date(debut)
     var laFin = new Date(fin)
     var leJour = (new Date(debut)).getDate();
-    var leJourSemaine = tableFr.jours[(new Date(debut)).getDay()];
-    var leMois = tableFr.mois[(new Date(debut)).getMonth()]
+    var leJourSemaine = dateFr.jours[(new Date(debut)).getDay()][0];
+    var leMois = dateFr.mois[(new Date(debut)).getMonth()][0]
     var minuteDebut = leDebut.getMinutes() == 0 ? '00': leDebut.getMinutes();
     var minuteFin = laFin.getMinutes() == 0 ? '00': laFin.getMinutes();
     return 'le ' + leJourSemaine + ' ' + leJour + ' ' + leMois + ' de ' + leDebut.getHours() + 'h' + minuteDebut + ' à ' + laFin.getHours() + 'h' + minuteFin;

@@ -64,3 +64,75 @@ h6,
 @apply pl-3 cursor-pointer;
 text-indent: -0.5rem;
 }
+
+.boutonEditeur {
+    @apply p-1 mr-1 rounded-sm border border-gray-600 h-6 w-6;
+}
+
+.boutonEditeurHover:hover {
+    @apply p-1 mr-1 rounded-sm border border-gray-600 h-6 w-6;
+}
+
+.boutonEditeur:focus {
+    @apply outline-none;
+}
+
+.editeur a {
+    @apply text-jauneLBF font-medium;
+}
+
+.bouton-jaune {
+    @apply p-1 mr-1 rounded-sm border h-6 w-6 text-gray-900 bg-jauneLBF border-jauneLBF;
+}
+
+.bouton-jaune-hover:hover {
+    @apply text-gray-900 bg-jauneLBF border-jauneLBF;
+}
+
+.bouton-vert {
+    @apply p-1 mr-1 rounded-sm border h-6 w-6 text-gray-900 bg-vertLBF border-vertLBF;
+}
+
+.bouton-vert-hover:hover {
+    @apply text-gray-900 bg-vertLBF border-vertLBF;
+}
+
+.bouton-bleu {
+    @apply p-1 mr-1 rounded-sm border h-6 w-6 text-gray-900 bg-bleuLBF border-bleuLBF;
+}
+
+.bouton-bleu-hover:hover {
+    @apply text-gray-900 bg-bleuLBF border-bleuLBF;
+}
+
+.bouton-orange {
+    @apply p-1 mr-1 rounded-sm border h-6 w-6 text-gray-900 bg-orangeLBF border-orangeLBF;
+}
+
+.bouton-orange-hover:hover {
+    @apply text-gray-900 bg-orangeLBF border-orangeLBF;
+}
+.bouton-rouge {
+    @apply p-1 mr-1 rounded-sm border h-6 w-6 text-gray-900 bg-rougeLBF border-rougeLBF;
+}
+
+.bouton-rouge-hover:hover {
+    @apply text-gray-900 bg-rougeLBF border-rougeLBF;
+}
+
+//fullCalendar
+.fc-unthemed td.fc-today {
+  @apply bg-vertLBFT;
+}
+
+.fc-timegrid-event .fc-event-main {
+    @apply text-gray-900;
+}
+
+.event-titre-atelier {
+    @apply text-gray-900 text-base font-semibold truncate;
+}
+
+.event-img-atelier {
+    @apply rounded-sm mx-auto;
+}
