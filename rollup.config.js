@@ -3,8 +3,29 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import { spawn } from 'child_process';
 
 const production = !process.env.ROLLUP_WATCH;
+
+function serve() {
+	let server;
+
+	return {
+		buildEnd(error) {
+			if (error && server) {
+				server.kill();
+			}
+		},
+		writeBundle() {
+			if (!server) {
+				server = spawn('npm', ['run', 'start', '--', '-d'], {
+					stdio: ['ignore', 'inherit', 'inherit'],
+					shell: true
+				});
+			}
+		}
+	}
+}
 
 export default {
 	input: 'src/main.js',
@@ -52,20 +73,3 @@ export default {
 		clearScreen: false
 	}
 };
-
-function serve() {
-	let started = false;
-
-	return {
-		writeBundle() {
-			if (!started) {
-				started = true;
-
-				require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
-					stdio: ['ignore', 'inherit', 'inherit'],
-					shell: true
-				});
-			}
-		}
-	};
-}
