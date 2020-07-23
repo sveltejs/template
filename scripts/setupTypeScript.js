@@ -97,8 +97,13 @@ fs.writeFileSync(tsconfigPath, tsconfig)
 if (!argv[2]) {
   // Remove the script
   fs.unlinkSync(path.join(__filename))
-  // Remove the scripts folder
-  fs.rmdirSync(path.join(__dirname))
+  // Check if the scripts folder is empty
+  if (fs.readdirSync(path.join(__dirname)).length === 0) {
+    // Remove the scripts folder
+    fs.rmdirSync(path.join(__dirname))     // just in case, keep the folder, there might be others scripts present
+  } else {
+    console.log('"scripts" folder not deleted. Folder not empty')
+  }
 }
 
 // Adds the extension recommendation
