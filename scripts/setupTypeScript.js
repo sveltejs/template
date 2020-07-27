@@ -97,12 +97,15 @@ fs.writeFileSync(tsconfigPath, tsconfig)
 if (!argv[2]) {
   // Remove the script
   fs.unlinkSync(path.join(__filename))
+
+  // Check for Mac's DS_store file and remove it
+  const ds_storeFile = path.join(__dirname, 'DS_store')
+  if (fs.existsSync(ds_storeFile)) fs.unlinkSync(ds_storeFile)
+
   // Check if the scripts folder is empty
   if (fs.readdirSync(path.join(__dirname)).length === 0) {
     // Remove the scripts folder
-    fs.rmdirSync(path.join(__dirname))     // just in case, keep the folder, there might be others scripts present
-  } else {
-    console.log('"scripts" folder not deleted. Folder not empty')
+    fs.rmdirSync(path.join(__dirname))
   }
 }
 
