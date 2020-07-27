@@ -101,7 +101,7 @@ if (!argv[2]) {
   // Check for Mac's DS_store file, and if it's the only one left remove it
   const remainingFiles = fs.readdirSync(path.join(__dirname))
   if (remainingFiles.length === 1 && remainingFiles[0] === '.DS_store') {
-    fs.unlinkSync(path.join(__dirname, 'DS_store'))
+    fs.unlinkSync(path.join(__dirname, '.DS_store'))
   }
 
   // Check if the scripts folder is empty
