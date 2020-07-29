@@ -22,7 +22,7 @@ const projectRoot = argv[2] || path.join(__dirname, "..")
 // Add deps to pkg.json
 const packageJSON = JSON.parse(fs.readFileSync(path.join(projectRoot, "package.json"), "utf8"))
 packageJSON.devDependencies = Object.assign(packageJSON.devDependencies, {
-  "svelte-check": "^0.1.0",
+  "svelte-check": "^1.0.0",
   "svelte-preprocess": "^4.0.0",
   "@rollup/plugin-typescript": "^4.0.0",
   "typescript": "^3.9.3",
