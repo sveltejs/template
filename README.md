@@ -35,6 +35,7 @@ Navigate to [localhost:5000](http://localhost:5000). You should see your app run
 
 By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
 
+If you don't see the "HELLO WORLD!" page on [localhost:5000](http://localhost:5000) it might be due to another process using that port. To use a different port, e.g. `5050`, modify the line `"start": "sirv public"` in the `package.json` file to `"start": "sirv public --port 5050"`.
 
 ## Building and running in production mode
 
