@@ -24,7 +24,7 @@ const packageJSON = JSON.parse(fs.readFileSync(path.join(projectRoot, "package.j
 packageJSON.devDependencies = Object.assign(packageJSON.devDependencies, {
   "svelte-check": "^1.0.0",
   "svelte-preprocess": "^4.0.0",
-  "@rollup/plugin-typescript": "^4.0.0",
+  "rollup-plugin-typescript2": "^0.27.2",
   "typescript": "^3.9.3",
   "tslib": "^2.0.0",
   "@tsconfig/svelte": "^1.0.0"
@@ -57,7 +57,7 @@ let rollupConfig = fs.readFileSync(rollupConfigPath, "utf8")
 // Edit imports
 rollupConfig = rollupConfig.replace(`'rollup-plugin-terser';`, `'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
-import typescript from '@rollup/plugin-typescript';`)
+import typescript from 'rollup-plugin-typescript2';`)
 
 // Replace name of entry point
 rollupConfig = rollupConfig.replace(`'src/main.js'`, `'src/main.ts'`)
