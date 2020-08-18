@@ -102,3 +102,17 @@ Then, from within your project folder:
 npm run build
 surge public my-project.surge.sh
 ```
+
+### With [Netlify](https://www.netlify.com/)
+
+Go to https://www.netlify.com/ and create a free account.
+1. After, go to https://app.netlify.com/start.
+2. And select the source of you code (gitlab, github, bitbucket).
+3. And finally Select you repo (project).
+
+Now, we need to set our deploy settings.
+1. You need to set the branch (master).
+2. Set the build command in this case is: `npm run build` (this command is in the package.json file).
+3. And the publish directory is: `public` (this is the default folder used by svelte for store the build files).
+
+Finally click on ‘Deploy Site’.
