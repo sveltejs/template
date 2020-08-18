@@ -6,6 +6,15 @@
 
 	<title>Svelte app</title>
 
+	<link rel="manifest" href="/manifest.json">
+    <meta name="description" content="Svelte PWA starter template">
+    <meta name="theme-color" content="#2F3BA2" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Svelte PWA">
+    <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
+
 	<link rel='icon' type='image/png' href='/favicon.png'>
 	<link rel='stylesheet' href='/global.css'>
 	<link rel='stylesheet' href='/build/bundle.css'>
@@ -14,5 +23,23 @@
 </head>
 
 <body>
+
+    <noscript>
+		<div>
+		  Oops! Javascript required here! Allow it and try again!
+		</div>
+	  </noscript>
+  
+	  <script src="/scripts/install.js"></script>
+	  <script>
+		if ('serviceWorker' in navigator) {
+		  window.addEventListener('load', () => {
+			navigator.serviceWorker.register('/service-worker.js')
+			  .then((reg) => {
+				console.log('Service worker registered.', reg);
+			  });
+		  });
+		}
+	  </script>
 </body>
 </html>
