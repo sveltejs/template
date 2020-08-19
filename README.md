@@ -105,10 +105,9 @@ surge public my-project.surge.sh
 
 ### With [Netlify](https://www.netlify.com/)
 
-Go to https://www.netlify.com/ and create a free account.
-1. After, go to https://app.netlify.com/start.
-2. And select the source of you code (gitlab, github, bitbucket).
-3. And finally Select you repo (project).
+1. Go to https://app.netlify.com/start.
+2. And select the source of your code (gitlab, github, bitbucket).
+3. And finally Select your repo (project).
 
 Now, we need to set our deploy settings.
 1. You need to set the branch (master).
