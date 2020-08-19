@@ -111,7 +111,7 @@ surge public my-project.surge.sh
 
 Now, we need to set our deploy settings.
 1. You need to set the branch (master).
-2. Set the build command in this case is: `npm run build` (this command is in the package.json file).
+2. Set the build command, which in this case is: `npm run build` (this command is in the package.json file).
 3. And the publish directory is: `public` (this is the default folder used by svelte for store the build files).
 
 Finally click on ‘Deploy Site’.
