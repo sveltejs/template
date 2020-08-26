@@ -60,7 +60,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';`)
 
 // Replace name of entry point
-rollupConfig = rollupConfig.replace(`'src/main.js'`, `'src/main.ts'`)
+rollupConfig = rollupConfig.replace(/("|'|`)src\/main\.js("|'|`)/, '$1src/main.ts$1')
 
 // Add preprocess to the svelte config, this is tricky because there's no easy signifier.
 // Instead we look for `css:` then the next `}` and add the preprocessor to that
