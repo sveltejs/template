@@ -1,16 +1,22 @@
 <script>
+  import { radio } from "./store.js";
+
   let commands = [
     {
       id: "1",
-      text: "Hey Google, do this thing - ",
+      text: "do the thing.",
     },
     {
       id: "2",
-      text: "Hey Google, call your ex-boyfriend's mom's lawyer.",
+      text: "call your ex-boyfriend's mom's lawyer.",
     },
     {
       id: "3",
-      text: "Hey Google, take me to the dark web.",
+      text: "take me to the dark web.",
+    },
+    {
+      id: "4",
+      text: "is your refrigerator running?",
     },
   ];
 
@@ -53,7 +59,7 @@
 </style>
 
 {#if clickedOnce}
-  <h2>{commands[randomCommand].text}</h2>
+  <h2>{$radio.tech}, {commands[randomCommand].text}</h2>
 {/if}
 
 <button on:click={handleClick}> Press this button </button>
