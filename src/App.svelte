@@ -15,7 +15,9 @@
   }
 </script>
 
-<style>
+<style type="text/scss">
+  $color: #00aa4d;
+
   main {
     text-align: center;
     padding: 1em;
@@ -24,7 +26,7 @@
   }
 
   h1 {
-    color: #00aa4d;
+    color: $color;
     text-transform: uppercase;
     font-size: 4em;
     font-weight: 100;

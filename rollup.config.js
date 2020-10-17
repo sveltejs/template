@@ -4,6 +4,10 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 
+// Guide to add Sass to Svelte project - https://daveceddia.com/svelte-with-sass-in-vscode/
+import preprocess from 'svelte-preprocess';
+
+
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -43,7 +47,8 @@ export default {
 			// a separate file - better for performance
 			css: css => {
 				css.write('bundle.css');
-			}
+			},
+			preprocess: preprocess()
 		}),
 
 		// If you have external dependencies installed from

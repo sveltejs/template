@@ -2,40 +2,40 @@
   import { radio } from "./store.js";
 </script>
 
-<style>
+<style type="text/scss">
   fieldset {
     border: none;
-  }
 
-  legend {
-    font-size: 1.5em;
-  }
+    legend {
+      font-size: 1.5em;
+    }
 
-  .radio-wrapper {
-    border: 0.25em solid white;
-    display: inline-block;
-    transition: 0.4s;
-  }
+    .radio-wrapper {
+      border: 0.25em solid white;
+      display: inline-block;
+      transition: 0.4s;
 
-  .radio-wrapper:hover {
-    background-color: white;
-    border: 0.25em solid #00aa4d;
-    border-radius: 5em;
-  }
+      &:hover {
+        background-color: white;
+        border: 0.25em solid #00aa4d;
+        border-radius: 5em;
+      }
 
-  input {
-    height: 1em;
-    width: 1em;
-  }
+      input {
+        height: 1em;
+        width: 1em;
+      }
 
-  label {
-    display: inline-block;
-    font-size: 1.5em;
-    padding: 1em;
-  }
+      label {
+        display: inline-block;
+        font-size: 1.5em;
+        padding: 1em;
+      }
 
-  label:hover {
-    cursor: pointer;
+      label:hover {
+        cursor: pointer;
+      }
+    }
   }
 
   button {
@@ -88,7 +88,7 @@
         name="company-name"
         id="other"
         bind:group={$radio.tech}
-        value={'The other one??'} />
+        value={'The other one'} />
       <label for="other">Other?</label>
     </div>
   </div>
