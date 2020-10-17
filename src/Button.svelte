@@ -30,7 +30,7 @@
   }
 </script>
 
-<style>
+<style type="text/scss">
   button {
     background-color: #00aa4d;
     border: 0.25em solid white;
