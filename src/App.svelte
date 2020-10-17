@@ -1,8 +1,18 @@
 <script>
+  import { radio } from "./store.js";
+
   import Form from "./Form.svelte";
   import Button from "./Button.svelte";
 
-  export let name;
+  let formComplete = false;
+
+  export let appName;
+
+  // I think we can use "event forwarding" to work with events from children to parents - DA 10/16/20
+  function handleClick() {
+    formComplete = !formComplete;
+    console.log($radio.tech);
+  }
 </script>
 
 <style>
@@ -28,11 +38,11 @@
 </style>
 
 <main>
-  <h1>{name}</h1>
+  <h1>{appName}</h1>
 
-  <!-- {#if !formData.done} -->
-  <Form />
-  <!-- {:else} -->
-  <Button />
-  <!-- {/if} -->
+  {#if !formComplete}
+    <Form on:click={handleClick} />
+  {:else}
+    <Button />
+  {/if}
 </main>
