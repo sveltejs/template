@@ -1,5 +1,6 @@
 <script>
   import { radio } from "./store.js";
+  import { fade } from "svelte/transition";
 
   let commands = [
     {
@@ -43,14 +44,18 @@
     font-size: 2em;
     text-transform: uppercase;
     transition-duration: 0.4s;
-  }
 
-  button:hover,
-  button:focus {
-    background-color: white;
-    border: 0.25em solid #00aa4d;
-    color: #00aa4d;
-    cursor: pointer;
+    &:hover,
+    &:focus {
+      background-color: white;
+      border: 0.25em solid #00aa4d;
+      color: #00aa4d;
+      cursor: pointer;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
   }
 
   h2 {
@@ -62,4 +67,4 @@
   <h2>{$radio.tech}, {commands[randomCommand].text}</h2>
 {/if}
 
-<button on:click={handleClick}> Press this button </button>
+<button on:click={handleClick} transition:fade> Press this button </button>
