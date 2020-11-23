@@ -1,5 +1,8 @@
 *Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 
+*Looking for a template that uses Webpack instead of Rollup? Go here --> [sveltejs/template-webpack](https://github.com/sveltejs/template-webpack)*
+
+
 ---
 
 # svelte app
