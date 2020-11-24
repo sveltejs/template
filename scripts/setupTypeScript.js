@@ -62,11 +62,22 @@ import typescript from '@rollup/plugin-typescript';`)
 // Replace name of entry point
 rollupConfig = rollupConfig.replace(`'src/main.js'`, `'src/main.ts'`)
 
-// Add preprocessor
-rollupConfig = rollupConfig.replace(
-  'dev: !production',
-  'dev: !production,\n\t\t\t\tpreprocess: sveltePreprocess()'
-);
+// Add preprocess to the svelte config, this is tricky because there's no easy signifier.
+// Instead we look for `css:` then the next `}` and add the preprocessor to that
+let foundCSS = false
+let match
+
+// https://regex101.com/r/OtNjwo/1
+const configEditor = new RegExp(/css:.|\n*}/gmi)
+while (( match = configEditor.exec(rollupConfig)) != null) {
+  if (foundCSS) {
+    const endOfCSSIndex = match.index + 1
+    rollupConfig = rollupConfig.slice(0, endOfCSSIndex) + ",\n			preprocess: sveltePreprocess()," + rollupConfig.slice(endOfCSSIndex);
+    break
+  }
+  if (match[0].includes("css:")) foundCSS = true
+}
+
 
 // Add TypeScript
 rollupConfig = rollupConfig.replace(
