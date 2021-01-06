@@ -104,7 +104,7 @@ if (!argv[2]) {
 }
 
 // Adds the extension recommendation
-fs.mkdirSync(path.join(projectRoot, ".vscode"))
+fs.mkdirSync(path.join(projectRoot, ".vscode"), { recursive: true })
 fs.writeFileSync(path.join(projectRoot, ".vscode", "extensions.json"), `{
   "recommendations": ["svelte.svelte-vscode"]
 }
