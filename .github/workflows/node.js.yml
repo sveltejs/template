@@ -10,7 +10,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build-and-move:
 
     runs-on: ubuntu-latest
 
@@ -26,8 +26,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: node scripts/setupTypeScript.js
-    - uses: actions/upload-artifact@v2
+    - name: Copy
+      uses: andstor/copycat-action@v3
       with:
-        name: my-artifact
-        path: ./
+        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        src_path: /.
+        dst_path: /.
+        dst_owner: dreitzner
+        dst_repo_name: template-typescript
 
