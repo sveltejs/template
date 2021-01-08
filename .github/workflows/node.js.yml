@@ -32,6 +32,6 @@ jobs:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
         src_path: /.
         dst_path: /.
-        dst_owner: dreitzner
+        dst_owner: sveltejs
         dst_repo_name: template-typescript
 
