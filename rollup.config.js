@@ -17,7 +17,7 @@ function serve() {
 			   See https://nodejs.org/docs/latest-v14.x/api/child_process.html#child_process_subprocess_kill_signal
 			   Passing the negation of PID of a detached process to 'kill' stops all its children */ 
 			try {
-				spawn('kill', ['--', `-${server.pid}`]);
+				spawn('kill', ['--', `-${server.pid}`], { shell: true });
 			} catch (_) {
 				server.kill();
 			}
