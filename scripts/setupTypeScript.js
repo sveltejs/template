@@ -24,8 +24,8 @@ const packageJSON = JSON.parse(fs.readFileSync(path.join(projectRoot, "package.j
 packageJSON.devDependencies = Object.assign(packageJSON.devDependencies, {
   "svelte-check": "^1.0.0",
   "svelte-preprocess": "^4.0.0",
-  "@rollup/plugin-typescript": "^6.0.0",
-  "typescript": "^3.9.3",
+  "@rollup/plugin-typescript": "^8.0.0",
+  "typescript": "^4.0.0",
   "tslib": "^2.0.0",
   "@tsconfig/svelte": "^1.0.0"
 })
