@@ -65,7 +65,7 @@ rollupConfig = rollupConfig.replace(`'src/main.js'`, `'src/main.ts'`)
 // Add preprocessor
 rollupConfig = rollupConfig.replace(
   'compilerOptions:',
-  'preprocess: sveltePreprocess(),\n\t\t\tcompilerOptions:'
+  'preprocess: sveltePreprocess({ sourceMap: !production }),\n\t\t\tcompilerOptions:'
 );
 
 // Add TypeScript
