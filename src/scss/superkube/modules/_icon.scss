@@ -1,0 +1,23 @@
+// =Icon
+.icon-text {
+    display: inline-block;
+}
+.icon-text svg {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -.12em;
+}
+@each $key, $size in $icons {
+    .icon-#{$key} svg {
+        width: $size;
+        height: $size;
+    }
+}
+@include for-sm {
+    @each $key, $size in $icons {
+        .icon-#{$key}-sm svg {
+            width: $size;
+            height: $size;
+        }
+    }
+}

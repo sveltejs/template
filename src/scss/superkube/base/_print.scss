@@ -1,0 +1,22 @@
+// =Print
+@media print {
+    body {
+        color: #000;
+    }
+    a {
+        &,
+        &:link,
+        &:visited {
+            color: #000;
+            text-decoration: none;
+        }
+    }
+    .hidden-print {
+        display: none
+    }
+}
+@media screen {
+    .visible-print {
+        display: none
+    }
+}

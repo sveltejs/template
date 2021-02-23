@@ -1,0 +1,68 @@
+// = Border
+[class^="bd-"],
+[class*=" bd-"] {
+    border-style: solid;
+}
+.bd-dashed { border-style: dashed; }
+.bd-dotted { border-style: dotted; }
+
+[class^="bd-top-"],
+[class*=" bd-top-"],
+[class^="bd-bottom-"],
+[class*=" bd-bottom-"],
+[class^="bd-left-"],
+[class*=" bd-left-"],
+[class^="bd-right-"],
+[class*=" bd-right-"] {
+    border-style: none;
+}
+[class^="bd-top-"], [class*=" bd-top-"] {
+    border-top-style: solid;
+    &.bd-dashed { border-top-style: dashed }
+    &.bd-dotted { border-top-style: dotted }
+}
+[class^="bd-bottom-"], [class*=" bd-bottom-"] {
+    border-bottom-style: solid;
+    &.bd-dashed { border-bottom-style: dashed }
+    &.bd-dotted { border-bottom-style: dotted }
+}
+[class^="bd-left-"], [class*=" bd-left-"] {
+    border-left-style: solid;
+    &.bd-dashed { border-left-style: dashed }
+    &.bd-dotted { border-left-style: dotted }
+}
+[class^="bd-right-"], [class*=" bd-right-"] {
+    border-right-style: solid;
+    &.bd-dashed { border-right-style: dashed }
+    &.bd-dotted { border-right-style: dotted }
+}
+
+// off
+.bd-off { border-width: transparent !important; }
+
+// color
+$borders-colors: map-get($colors, border);
+@each $name, $value in $borders-colors {
+    .bd-#{$name} { border-color: color(border, $name) }
+}
+
+// size
+@each $name, $value in $borders {
+    .bd-#{$name} { border-width: $value }
+    .bd-top-#{$name} { border-top-width: $value; }
+    .bd-bottom-#{$name} { border-bottom-width: $value }
+    .bd-left-#{$name} { border-left-width: $value }
+    .bd-right-#{$name} { border-right-width: $value }
+}
+
+@include for-sm {
+    .bd-off-sm { border-color: transparent !important; }
+
+    @each $name, $value in $borders {
+        .bd-#{$name}-sm { border-width: $value }
+        .bd-top-#{$name}-sm { border-top-width: $value }
+        .bd-bottom-#{$name}-sm { border-bottom-width: $value }
+        .bd-left-#{$name}-sm { border-left-width: $value }
+        .bd-right-#{$name}-sm { border-right-width: $value }
+    }
+}

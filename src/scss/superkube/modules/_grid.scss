@@ -1,0 +1,67 @@
+// =Grid
+@include grid($grid);
+
+// =Gutters
+@each $name, $val in $spacing-scale {
+    .gutter-#{$name} {
+        grid-column-gap: $unit * $val;
+    }
+}
+@include for-md {
+    @each $name, $val in $spacing-scale {
+        .gutter-#{$name}-md {
+            grid-column-gap: $unit * $val;
+        }
+    }
+}
+@include for-sm {
+    @each $name, $val in $spacing-scale {
+        .gutter-#{$name}-sm {
+            grid-column-gap: $unit * $val;
+        }
+    }
+}
+
+// =Gaps
+@each $name, $val in $spacing-scale {
+    .gap-#{$name} {
+        grid-row-gap: $unit * $val;
+    }
+    .gap-#{$name} + .gap-#{$name} {
+        margin-top: $unit * $val;
+    }
+}
+@include for-md {
+    @each $name, $val in $spacing-scale {
+        .gap-#{$name}-md {
+            grid-row-gap: $unit * $val;
+        }
+        .gap-#{$name}-md + .gap-#{$name}-md {
+            margin-top: $unit * $val;
+        }
+    }
+}
+@include for-sm {
+    @each $name, $val in $spacing-scale {
+        .gap-#{$name}-sm {
+            grid-row-gap: $unit * $val;
+        }
+        .gap-#{$name}-sm + .gap-#{$name}-sm {
+            margin-top: $unit * $val;
+        }
+    }
+}
+
+// =Offset
+$columns: map-get($grid, columns);
+@for $i from 1 through $columns {
+    .column-offset-#{$i} {
+        grid-column-start: $i+1;
+    }
+}
+@include for-sm {
+     [class^="column-offset-"],
+     [class*=" column-offset-"] {
+        grid-column-start: unset;
+    }
+}

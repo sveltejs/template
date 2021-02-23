@@ -1,0 +1,27 @@
+// =Flex
+@mixin flex-layout {
+    display: flex;
+
+    @include for-sm {
+        flex-direction: column;
+    }
+}
+@mixin flex-content {
+    flex-grow: 1;
+    min-width: 0;
+}
+@mixin flex-sidebar($width) {
+    flex: 0 0 $width;
+
+    @include for-sm {
+        flex: 0 0 100%;
+    }
+}
+@mixin flex-auto {
+    flex: 1 1 auto;
+}
+@mixin flex-column {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}

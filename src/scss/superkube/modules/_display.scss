@@ -1,0 +1,38 @@
+// =Display
+.hidden {
+    display: none;
+}
+.visible {
+    display: block;
+}
+.visible-lg,
+.visible-md,
+.visible-sm {
+    display: none;
+}
+
+@include for-lg {
+    .visible-lg { display: block; }
+    .hidden-lg  { display: none; }
+}
+@include for-md {
+    .visible-md { display: block; }
+    .hidden-md  { display: none; }
+}
+@include for-sm {
+    .visible-sm { display: block; }
+    .hidden-sm  { display: none; }
+}
+
+// =Visually Hidden
+.visually-hidden {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(0px 0px 99.9% 99.9%);
+    clip-path: inset(0px 0px 99.9% 99.9%);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    border: 0;
+}

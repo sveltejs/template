@@ -1,0 +1,62 @@
+// =Button
+button,
+a.button,
+.button {
+    -webkit-appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+    font-family: inherit;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    background: none;
+    box-shadow: none;
+    text-decoration: none;
+    line-height: 1.25;
+
+    // no style
+    font-size: map-deep-get($buttons-scale, regular, font-size);
+    font-weight: normal;
+    color: black;
+    padding: map-deep-get($buttons-scale, regular, padding);
+    height: map-deep-get($buttons-scale, regular, height);
+    border-radius: map-deep-get($buttons-scale, regular, radius);
+    border: 1px solid color(button, default, base, border);
+    background-color: color(button, default, base, background);
+}
+.button {
+    // Icons
+    & [class^='fa-'],
+    & [class*=' fa-'],
+    & [class^='icon-'],
+    & [class*=' icon-'] {
+        & + span {
+            margin-left: 4px;
+        }
+    }
+    & span + [class^='fa-'],
+    & span + [class*=' fa-'],
+    & span + [class^='icon-'],
+    & span + [class*=' icon-'] {
+        margin-left: 4px;
+        margin-right: -2px;
+    }
+    // Hover
+    &:hover,
+    &:focus {
+        outline: none;
+        text-decoration: none;
+    }
+    // Disabled
+    &:disabled {
+        cursor: default;
+        opacity: 0.5;
+    }
+}
+
+// Build
+@include build-buttons($buttons, '.button', 'button-');
+@include build-buttons-scale($buttons-scale, '.button', 'button-');

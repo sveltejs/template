@@ -1,0 +1,17 @@
+// =Hint
+.hint {
+    font-style: normal;
+    font-size: type-size(text, small);
+    line-height: type-line(text, small);
+    color: color(hint, default);
+}
+.hint-success {
+    color: color(hint, success);
+}
+.hint-error {
+    color: color(hint, error);
+}
+.req {
+    font-weight: bold;
+    color: color(hint, required);
+}

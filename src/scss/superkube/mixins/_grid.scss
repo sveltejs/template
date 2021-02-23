@@ -1,0 +1,76 @@
+// =Grid
+@mixin grid($grid) {
+    $gridname: map-get($grid, gridname);
+    $columnname: map-get($grid, columnname);
+    $gutter: map-get($grid, gutter);
+    $gap: map-get($grid, gap);
+    $columns: map-get($grid, columns);
+
+    .#{$gridname} {
+        display: grid;
+        grid-template-columns: repeat($columns, 1fr);
+        grid-column-gap: $gutter;
+        grid-row-gap: $gap;
+    }
+    .#{$gridname} + .#{$gridname} {
+        margin-top: $gap;
+    }
+    // Gutterless
+    .#{$gridname}-gutterless {
+        grid-column-gap: 0;
+    }
+    // Gapless
+    .#{$gridname}-gapless {
+        grid-row-gap: 0;
+        & + .#{$gridname} {
+            margin-top: 0;
+        }
+    }
+    // Auto
+    .#{$gridname}-auto {
+        grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+    }
+
+    // Grids
+    @for $i from 1 through $columns {
+        .#{$gridname}-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
+        }
+    }
+
+    // Columns
+    @for $i from 1 through $columns {
+        .#{$columnname}-#{$i} {
+            @include column($i);
+        }
+    }
+    // md
+    @include for-md {
+        @for $i from 1 through $columns {
+            .#{$gridname}-#{$i}-md {
+                grid-template-columns: repeat($i, 1fr);
+            }
+        }
+    }
+    // sm
+    @include for-sm {
+        .#{$gridname},
+        .#{$gridname}-auto {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .#{$columnname} {
+            @include column(1);
+        }
+        .#{$columnname}:empty {
+            display: none;
+        }
+        @for $i from 1 through $columns {
+            .#{$gridname}-#{$i}-sm {
+                grid-template-columns: repeat($i, 1fr);
+            }
+        }
+    }
+}
+@mixin column($num) {
+    grid-column-end: span $num;
+}

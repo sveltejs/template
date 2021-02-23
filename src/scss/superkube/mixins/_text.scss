@@ -1,0 +1,25 @@
+// Text Gradient
+@mixin text-gradient($color, $deg: 90deg) {
+    $from: map-get($color, from);
+    $to: map-get($color, to);
+
+      color: $from;
+    background-image: linear-gradient($deg, $from, $to);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+// Dropcap
+// Based on: https://codepen.io/0skar/pen/yOojVM
+// $size — font size of the text
+// $line — line height of the text
+// $lines — how many lines of the text should be dropcap
+// $magic1 — adjust font size
+// $magic2 — adjust line height
+@mixin dropcap($size, $line: 1.5, $lines: 3, $magic1: 1, $magic2: 1) {
+    float: left;
+    padding: 0 0.1em 0 0;
+    font-size: floor(($size * $line)) * $lines * $magic1;
+    line-height: floor(($size * $line)) * $lines * $magic2;
+}

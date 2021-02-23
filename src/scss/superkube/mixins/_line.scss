@@ -1,0 +1,35 @@
+// =Line
+@mixin line($line) {
+    $height: map-get($line, height);
+    $width: map-get($line, width);
+    $align: map-get($line, align);
+
+    margin-top: map-get($line, margin-top);
+    margin-bottom: map-get($line, margin-bottom);
+
+    @if (strip-units($height) > 10) {
+        height: $height;
+    }
+    @else {
+        height: 10px;
+    }
+
+    &:before {
+        width: $width;
+        max-width: $width;
+        margin-top: -($height/2);
+        border-top-width: $height;
+        border-top-style: map-get($line, style);
+        border-top-color: map-get($line, color);
+
+        @if $align == right {
+            left: 100%;
+            margin-left: -$width;
+        }
+        @else if $align == center {
+            left: 50%;
+            margin-left: -($width/2);
+        }
+
+    }
+}

@@ -1,0 +1,34 @@
+// =Shadow
+.sh-off {
+    box-shadow: none;
+}
+$shadow-colors: map-get($colors, shadow);
+@each $name, $value in $shadow-colors {
+    @if $name == neutral {
+        @each $type, $shadow in $shadows {
+            .sh-#{$type} { box-shadow: shadow($name, $type); }
+        }
+    }
+    @else {
+        @each $type, $shadow in $shadows {
+            .sh-#{$name}-#{$type} { box-shadow: shadow($name, $type); }
+        }
+    }
+}
+@include for-sm {
+    .sh-off-sm {
+        box-shadow: none;
+    }
+    @each $name, $value in $shadow-colors {
+        @if $name == neutral {
+            @each $type, $shadow in $shadows {
+                .sh-#{$type}-sm { box-shadow: shadow($name, $type); }
+            }
+        }
+        @else {
+            @each $type, $shadow in $shadows {
+                .sh-#{$name}-#{$type}-sm { box-shadow: shadow($name, $type); }
+            }
+        }
+    }
+}

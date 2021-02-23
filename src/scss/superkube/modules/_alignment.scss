@@ -1,0 +1,9 @@
+// =Align
+.a-left   { text-align: left; }
+.a-center { text-align: center; }
+.a-right  { text-align: right; }
+@include for-sm {
+    .a-left-sm { text-align: left; }
+    .a-center-sm { text-align: center; }
+    .a-right-sm { text-align: right; }
+}

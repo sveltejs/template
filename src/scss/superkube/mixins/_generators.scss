@@ -1,0 +1,116 @@
+// =Generators
+
+// colors
+@mixin generate-colors($colors) {
+    @each $name, $map in $colors {
+        @if type-of($map) == map {
+            @include split-color-to-var($name, $map);
+        }
+        @else {
+            @if length($map) > 0 {
+                --c-#{$name}: #{$map};
+            }
+        }
+    }
+}
+@mixin split-color-to-var($sel, $map) {
+    @each $key, $value in $map {
+        @if type-of($value) == map {
+            @include split-color-to-var(#{$sel}-#{$key}, $value);
+        }
+        @else {
+            --c-#{$sel}-#{$key}: #{$value};
+        }
+    }
+}
+
+
+// base headings
+@mixin generate-base-headings($map, $breakpoint) {
+    @if map-has-key($map, base) {
+        $headings: h1, h2, h3, h4, h5, h6;
+        $obj: map-deep-get($map, base);
+        @each $key, $val in $headings {
+            @if map-has-key($obj, $key) {
+                #{$key} {
+                    font-size: type-size(base, $key, $breakpoint);
+                    line-height: type-line(base, $key, $breakpoint);
+                }
+            }
+        }
+    }
+}
+
+// links
+@mixin generate-links {
+    $obj: map-get($colors, link);
+    @each $key, $val in $obj {
+        @if ($key != default and type-of($val) == 'map') {
+            &-#{$key} {
+                color: color(link, $key, base);
+                &:hover {
+                    @include transition;
+                    color: color(link, $key, hover);
+                }
+            }
+        }
+    }
+}
+
+// text
+@mixin generate-text-colors {
+    $obj: map-get($colors, text);
+    @each $key, $val in $obj {
+        @if ($key != default) {
+            &-#{$key} {
+                color: color(text, $key);
+            }
+        }
+    }
+}
+@mixin generate-text-size($map, $breakpoint) {
+    $obj: map-get($map, text);
+    @each $key, $val in $obj {
+        @if (type-of($val) == 'list') {
+            &-#{$key} {
+                font-size: type-size(text, $key, $breakpoint);
+                line-height: type-line(text, $key, $breakpoint);
+            }
+            @if (length($val) == 3) {
+                &-#{$key}-alt {
+                    font-size: type-size(text, $key, $breakpoint);
+                    line-height: type-line-alt(text, $key, $breakpoint);
+                }
+            }
+        }
+    }
+}
+
+// heading
+@mixin generate-heading-colors {
+    $obj: map-get($colors, heading);
+    @each $key, $val in $obj {
+        @if ($key != default) {
+            &-#{$key} {
+                color: color(heading, $key);
+            }
+        }
+    }
+}
+@mixin generate-heading-size($map, $breakpoint) {
+    $obj: map-get($map, heading);
+    @each $key, $val in $obj {
+        @if (type-of($val) == 'list') {
+            &-#{$key} {
+                font-size: type-size(heading, $key, $breakpoint);
+                line-height: type-line(heading, $key, $breakpoint);
+            }
+            @if (length($val) == 3) {
+                &-#{$key}-alt {
+                    font-size: type-size(heading, $key, $breakpoint);
+                    line-height: type-line-alt(heading, $key, $breakpoint);
+                }
+            }
+        }
+    }
+}

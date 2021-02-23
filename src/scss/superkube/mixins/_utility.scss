@@ -1,0 +1,78 @@
+// Transition
+@mixin transition($transition: all .2s linear) {
+    transition: $transition;
+}
+
+// Placeholder
+@mixin placeholder($color) {
+    $placeholders: "-webkit-input-" "-moz-" "-ms-input-" "";
+    @each $placeholder in $placeholders {
+      #{if(&, "&", "*")}::#{$placeholder}placeholder {
+        color: $color;
+      }
+    }
+}
+
+// Centered
+@mixin centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// Uncentered
+@mixin uncentered {
+    margin-left: initial;
+    margin-right: initial;
+}
+
+// Stretched
+@mixin stretched {
+    &:after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        content: "";
+    }
+}
+
+//  Close
+@mixin close($size: 1em, $weight: 1px, $color: #000) {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    width: $size;
+    height: $size;
+    opacity: 0.7;
+
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        background-color: $color;
+    }
+    &::before {
+        height: $weight;
+        width: 75%;
+    }
+    &::after {
+        height: 75%;
+        width: $weight;
+    }
+    &:hover {
+        opacity: 1;
+    }
+}
+@mixin close-color($color) {
+    &::before,
+    &::after {
+        background-color: $color;
+    }
+}

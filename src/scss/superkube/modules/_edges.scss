@@ -1,0 +1,21 @@
+// =Edges
+.edges-off { padding-left: 0; padding-right: 0; }
+@each $name, $value in $edges {
+    @if $name == base {
+        .edges { padding-left: $value; padding-right: $value; }
+    }
+    @else {
+        .edges-#{$name} { padding-left: $value; padding-right: $value; }
+    }
+}
+@include for-sm {
+    .edges-off-sm { padding-left: 0; padding-right: 0; }
+    @each $name, $value in $edges {
+        @if $name == base {
+            .edges-sm { padding-left: $value; padding-right: $value; }
+        }
+        @else {
+            .edges-#{$name}-sm { padding-left: $value; padding-right: $value; }
+        }
+    }
+}

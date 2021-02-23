@@ -1,0 +1,15 @@
+:root {
+    @include generate-colors($colors);
+}
+@if $dark-class == null {
+    @media (prefers-color-scheme: dark) {
+        :root {
+            @include generate-colors($colors-dark);
+        }
+    }
+}
+@else {
+    html.#{$dark-class} {
+        @include generate-colors($colors-dark);
+    }
+}

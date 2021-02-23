@@ -1,0 +1,8 @@
+// =Heading
+.heading {
+    @include generate-heading-colors;
+    @include generate-heading-size($type, std);
+}
+@include for-lg { .heading { @include generate-heading-size($type-lg, lg); }}
+@include for-md { .heading { @include generate-heading-size($type-md, md); }}
+@include for-sm { .heading { @include generate-heading-size($type-sm, sm); }}

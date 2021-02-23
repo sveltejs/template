@@ -1,0 +1,20 @@
+// =Breakpoint
+@mixin breakpoint($min: 0, $max: 0) {
+    $query: "all" !default;
+    @if $min != 0 and $max != 0 { $query: "(min-width: #{$min}) and (max-width: #{$max})"; }
+    @else if $min != 0 and $max == 0 { $query: "(min-width: #{$min})"; }
+    @else if $min == 0 and $max != 0 { $query: "(max-width: #{$max})"; }
+    @media #{$query} { @content; }
+}
+@mixin for-lg {
+    @media only screen and (min-width: breakpoint(lg)) { @content; }
+}
+@mixin for-md {
+    @media only screen and (max-width: breakpoint(md) - 1) { @content; }
+}
+@mixin for-sm {
+    @media only screen and (max-width: breakpoint(sm) - 1) { @content; }
+}
+@mixin not-sm {
+    @media only screen and (min-width: breakpoint(sm)) { @content; }
+}

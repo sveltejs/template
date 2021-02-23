@@ -1,0 +1,82 @@
+// =Buttons
+@mixin build-buttons-scale($scale, $name, $prefix: '') {
+    #{$name} {
+        @each $key, $obj in $scale {
+            @if $key == regular {
+                 @include build-button-scale($obj);
+            }
+            @else {
+                &.#{$prefix}#{$key} {
+                    @include build-button-scale($obj);
+                }
+            }
+        }
+    }
+}
+@mixin build-button-scale($obj) {
+    @each $objkey, $objvalue in $obj {
+        #{$objkey}: $objvalue;
+    }
+}
+@mixin build-buttons($buttons, $name, $prefix: '') {
+    @each $key, $obj in $buttons {
+        @if ($key == default) {
+            #{$name} {
+                @include build-button($obj);
+            }
+        }
+        @else {
+            #{$name} {
+                &.#{$prefix}#{$key} {
+                    @include build-button($obj);
+                }
+            }
+       }
+    }
+}
+@mixin build-button($button) {
+    @each $key, $value in $button {
+        @if $key == base {
+            @include build-button-state($value);
+        }
+        @else if $key == hover {
+            &:hover,
+            &:focus {
+                @include build-button-state($value);
+            }
+        }
+        @else if $key == disabled {
+            &:disabled {
+                @include build-button-state($value);
+            }
+        }
+        @else {
+            &-#{$key} {
+                @include build-button-state($value);
+            }
+        }
+    }
+}
+@mixin build-button-state($obj) {
+    @each $key, $value in $obj {
+        @if ($key == background-color) {
+            @include background-gradient($value);
+        }
+        @else if ($key == box-shadow and type-of($value) == 'map') {
+            $str: '';
+            $z: 0;
+            @each $k, $v in $value {
+                $z: $z + 1;
+                $glue: ', ';
+                @if ($z == length($value)) {
+                    $glue: '';
+                }
+                $str: $str + $v + $glue;
+            }
+            #{$key}: #{$str};
+        }
+        @else {
+            #{$key}: $value;
+        }
+    }
+}

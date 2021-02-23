@@ -1,0 +1,18 @@
+// =Form
+.form-item {
+    margin-bottom: type-space(form-item-to-item);
+}
+.form-item .form-item {
+    margin-bottom: 0;
+}
+.form-buttons {
+    margin-top: type-space(form-buttons-to-item);
+}
+.form-checkboxes label.checkbox {
+    display: inline-block;
+    margin-bottom: 0;
+
+      & + label.checkbox {
+          margin-left: 1em;
+      }
+}

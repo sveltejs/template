@@ -1,0 +1,13 @@
+// =Link
+.link-stretched {
+    @include stretched;
+}
+.link-underline {
+    text-decoration: underline;
+}
+.link-underline-off {
+    text-decoration: none;
+}
+.link {
+    @include generate-links;
+}

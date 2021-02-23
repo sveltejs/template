@@ -1,0 +1,207 @@
+// =Functions
+
+// breakpoint
+@function breakpoint($name) {
+    @return map-get($breakpoints, $name);
+}
+
+// type size
+@function type-size($section, $name, $breakpoint: std) {
+    @return type(1, $section, $name, $breakpoint);
+}
+
+// type line
+@function type-line($section, $name, $breakpoint: std) {
+    @return type(2, $section, $name, $breakpoint);
+}
+
+// type line alt
+@function type-line-alt($section, $name, $breakpoint: std) {
+    @return type(3, $section, $name, $breakpoint);
+}
+
+// type
+@function type($index, $section, $name, $breakpoint) {
+    $map: $type;
+
+    @if ($breakpoint == sm) { $map: $type-sm; }
+    @else if ($breakpoint == md) { $map: $type-md; }
+    @else if ($breakpoint == lg) { $map: $type-lg; }
+
+    $val: map-deep-get($map, $section, $name);
+
+    @return nth($val, $index);
+}
+
+// type space
+@function type-space($name) {
+    @return map-get($type-space, $name);
+}
+
+// palette
+@function palette($keys...) {
+    @return map-deep-get($palette, $keys...);
+}
+@function palette-dark($keys...) {
+    @return map-deep-get($palette-dark, $keys...);
+}
+
+// color
+@function color($keys...) {
+    $color: map-deep-get($colors, $keys...);
+    $str: to-string($keys, '-');
+
+    @if (type-of($color) == 'map') {
+        @return (
+            from: var(--c-#{$str}-from),
+            to: var(--c-#{$str}-to)
+        );
+    }
+    @else {
+        @return var(--c-#{$str});
+    }
+}
+
+// level
+@function level($name) {
+    @return map-get($levels, $name);
+}
+
+// radius
+@function radius($name) {
+    @return map-get($radius, $name);
+}
+
+// shadow
+@function shadow($name, $value) {
+    @return build-shadows($shadows, $name, $value);
+}
+
+@function build-shadows($map, $name, $value) {
+    $shadow: map-get($map, $value);
+    $color: var(--c-shadow-#{$name}-#{$value});
+
+    @if type-of($shadow) == 'map' {
+        $map: ();
+        @each $key, $val in $shadow {
+            $color: var(--c-shadow-#{$name}-#{$value}-#{$key});
+            $str: $val $color;
+            $map: map-merge($map, ($key: $str));
+        }
+
+        @return map-values($map);
+    }
+    @else {
+        @return $shadow $color;
+    }
+}
+
+@function build-shadow($shadow, $color) {
+    $len: length($shadow);
+    $opacity: nth($shadow, $len);
+    $shadow: remove-nth($shadow, $len);
+    $str: $shadow rgba($color, $opacity);
+
+    @return $str;
+}
+
+// container
+@function container($name) {
+    @return map-get($containers, $name);
+}
+
+// edges
+@function edge($name) {
+    @return map-get($edges, $name);
+}
+
+// strip units
+@function strip-units($number) {
+    @return $number / ($number * 0 + 1);
+}
+
+// map deep get
+// https://www.sitepoint.com/extra-map-functions-sass/
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
+    @return $map;
+}
+// map deep extend
+@function map-extend($map, $maps.../*, $deep */) {
+  $last: nth($maps, -1);
+  $deep: $last == true;
+  $max: if($deep, length($maps) - 1, length($maps));
+
+  // Loop through all maps in $maps...
+  @for $i from 1 through $max {
+    // Store current map
+    $current: nth($maps, $i);
+
+    // If not in deep mode, simply merge current map with map
+    @if not $deep {
+      $map: map-merge($map, $current);
+    } @else {
+      // If in deep mode, loop through all tuples in current map
+      @each $key, $value in $current {
+
+        // If value is a nested map and same key from map is a nested map as well
+        @if type-of($value) == "map" and type-of(map-get($map, $key)) == "map" {
+          // Recursive extend
+          $value: map-extend(map-get($map, $key), $value, true);
+        }
+
+        // Merge current tuple with map
+        $map: map-merge($map, ($key: $value));
+      }
+    }
+  }
+
+  @return $map;
+}
+
+// list to string
+@function to-string($list, $glue: '', $is-nested: false) {
+  $result: null;
+
+  @for $i from 1 through length($list) {
+    $e: nth($list, $i);
+
+    @if type-of($e) == list {
+      $result: $result#{to-string($e, $glue, true)};
+    } @else {
+      $result: if(
+        $i != length($list) or $is-nested,
+        #{$result}#{$e}#{$glue}, #{$result}#{$e}
+      );
+    }
+  }
+
+  @return $result;
+}
+
+// remove item
+@function remove-nth($list, $index) {
+  $result: null;
+
+  @if type-of($index) != number {
+    @warn "$index: #{quote($index)} is not a number for `remove-nth`.";
+  } @else if $index == 0 {
+    @warn "List index 0 must be a non-zero integer for `remove-nth`.";
+  } @else if abs($index) > length($list) {
+    @warn "List index is #{$index} but list is only #{length($list)} item long for `remove-nth`.";
+  } @else {
+    $result: ();
+    $index: if($index < 0, length($list) + $index + 1, $index);
+
+    @for $i from 1 through length($list) {
+      @if $i != $index {
+        $result: append($result, nth($list, $i));
+      }
+    }
+  }
+
+  @return $result;
+}

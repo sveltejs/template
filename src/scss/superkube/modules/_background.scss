@@ -1,0 +1,18 @@
+// =Backgrounds
+$backgrounds: map-get($colors, background);
+@each $name, $value in $backgrounds {
+    .bg-#{$name} { background-color: color(background, $name); }
+}
+
+// =Gradients
+$gradients: map-get($colors, gradient);
+@each $name, $value in $gradients {
+    .gr-#{$name} {
+        @if (map-has-key($value, deg)) {
+            @include background-gradient(color(gradient, $name), map-get($value, deg))
+        }
+        @else {
+            @include background-gradient(color(gradient, $name));
+        }
+    }
+}

@@ -1,0 +1,33 @@
+// =Background
+@mixin background-image($file1, $file2, $width: auto, $height:  auto) {
+    background-image: url($file1);
+
+    @media
+      only screen and (-webkit-min-device-pixel-ratio: 2),
+      only screen and (min--moz-device-pixel-ratio: 2),
+      only screen and (min-device-pixel-ratio: 2) {
+        background-image: url($file2);
+        background-size: $width $height;
+    }
+}
+
+// Gradient
+@mixin background-gradient($color, $deg: 180deg) {
+    @if (type-of($color) == 'map') {
+        $from: map-get($color, from);
+        $to: map-get($color, to);
+
+        background-color: $from;
+
+        @if ($deg == 'radial') {
+            background-image: radial-gradient($from, $to);
+        }
+        @else {
+            background-image: linear-gradient($deg, $from 0%, $to 100%);
+        }
+    }
+    @else {
+        background-color: $color;
+        background-image: none;
+    }
+}

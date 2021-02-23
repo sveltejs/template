@@ -1,0 +1,15 @@
+// =Rounded
+.rd-off    { border-radius: 0 }
+.rd-circle { border-radius: 50% }
+
+@each $name, $value in $radius {
+    .rd-#{$name} { border-radius: $value }
+}
+@include for-sm {
+    .rd-off-sm    { border-radius: 0 }
+    .rd-circle-sm { border-radius: 50% }
+    @each $name, $value in $radius {
+        .rd-#{$name}-sm { border-radius: $value }
+    }
+}
+

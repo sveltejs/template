@@ -1,0 +1,21 @@
+// =Container
+@each $name, $value in $containers {
+    @if $name == base {
+        .container { max-width: $value; }
+    }
+    @else {
+        .container-#{$name} { max-width: $value; }
+    }
+}
+$container-columns: map-get($grid, columns);
+$container-gutter: map-get($grid, gutter);
+@for $i from 1 through $container-columns {
+    .container-#{$i} { max-width: calc((100%/#{$container-columns}*#{$i}) - #{$container-gutter}/2); }
+}
+@include for-sm {
+    .container,
+    [class^="container-"],
+    [class*=" container-"] {
+        max-width: none;
+    }
+}

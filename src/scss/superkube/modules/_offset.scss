@@ -1,0 +1,26 @@
+// =Offset
+[class^="o-"],
+[class*=" o-"] {
+    position: relative;
+}
+.o-off { left: initial; right: initial; top: initial; bottom: initial; }
+@each $name, $index in $spacing-scale {
+    .o-left-#{$name}   { left: -($unit * $index); }
+    .o-right-#{$name}  { right: -($unit * $index); }
+    .o-top-#{$name}    { top: -($unit * $index); }
+    .o-bottom-#{$name} { bottom: -($unit * $index); }
+}
+@include for-sm {
+    .o-off-sm        { left: initial; right: initial; top: initial; bottom: initial; }
+    .o-left-off-sm   { left: initial; }
+    .o-right-off-sm  { right: initial; }
+    .o-top-off-sm    { top: initial; }
+    .o-bottom-off-sm { bottom: initial; }
+
+    @each $name, $index in $spacing-scale {
+        .o-left-#{$name}-sm   { left: -($unit * $index); }
+        .o-right-#{$name}-sm  { right: -($unit * $index); }
+        .o-top-#{$name}-sm    { top: -($unit * $index); }
+        .o-bottom-#{$name}-sm { bottom: -($unit * $index); }
+    }
+}

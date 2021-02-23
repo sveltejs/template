@@ -1,0 +1,30 @@
+// =Container
+@mixin container($name: null) {
+    @if $name == null {
+        $name: base;
+    }
+
+    @if type-of($name) == 'number' {
+        $container-columns: map-get($grid, columns);
+        $container-gutter: map-get($grid, gutter);
+
+        max-width: calc((100%/#{$container-columns}*#{$name}) - #{$container-gutter}/2);
+    }
+    @else {
+        max-width: container($name);
+    }
+}
+
+
+// =Edges
+@mixin edges($name1: null, $name2: null) {
+    @if $name1 == null {
+        $name1: base;
+    }
+    @if $name2 == null {
+        $name2: $name1;
+    }
+
+    padding-left: edge($name1);
+    padding-right: edge($name2);
+}

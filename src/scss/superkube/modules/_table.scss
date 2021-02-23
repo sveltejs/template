@@ -1,0 +1,13 @@
+// =Table
+.table-scrollable {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.table-bordered {
+    td,
+    th {
+        padding: 0.75em;
+        border: 1px solid color(table, cell, border);
+    }
+}

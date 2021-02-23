@@ -1,0 +1,43 @@
+// =Text
+.text-strong {
+    font-weight: bold;
+}
+.text-italic {
+    font-style: italic;
+}
+.text-nowrap {
+    &,
+    & td,
+    & th {
+        white-space: nowrap;
+    }
+}
+.text {
+    @include generate-text-colors;
+    @include generate-text-size($type, std);
+}
+@include for-lg { .text { @include generate-text-size($type-lg, lg); }}
+@include for-md { .text { @include generate-text-size($type-md, md); }}
+@include for-sm { .text { @include generate-text-size($type-sm, sm); }}
+
+
+// =Gradients
+$gradients: map-get($colors, text-gradient);
+@each $name, $value in $gradients {
+    .text-gr-#{$name} {
+        @if (map-has-key($value, deg)) {
+            @include text-gradient(color(text-gradient, $name), map-get($value, deg));
+        }
+        @else {
+            @include text-gradient(color(text-gradient, $name));
+        }
+    }
+}
+[class^="text-gr-"],
+[class*=" text-gr-"] {
+    display: inline-block;
+    a,
+    a:hover {
+        opacity: 1;
+    }
+}

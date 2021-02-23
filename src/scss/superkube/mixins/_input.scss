@@ -1,0 +1,62 @@
+
+// =Inputs
+@mixin build-inputs-scale($scale, $tag, $name, $prefix: '') {
+    @each $key, $obj in $scale {
+        @if $key == regular {
+            #{$tag} {
+                @include build-input-scale($obj);
+            }
+        }
+        @else {
+            .#{$prefix}#{$key} {
+                @include build-input-scale($obj);
+            }
+        }
+    }
+}
+@mixin build-input-scale($obj) {
+    @each $objkey, $objvalue in $obj {
+        #{$objkey}: $objvalue;
+    }
+}
+@mixin build-inputs($inputs, $tag, $name, $prefix: '') {
+    @each $key, $obj in $inputs {
+        @if ($key == default) {
+            #{$tag} {
+                @include build-input($obj);
+            }
+        }
+        @else {
+            .#{$prefix}#{$key} {
+                @include build-input($obj);
+            }
+       }
+    }
+}
+@mixin build-input($input) {
+    @each $key, $value in $input {
+        @if $key == base {
+            @include build-input-state($value);
+        }
+        @else if $key == hover {
+            &:hover {
+                @include build-input-state($value);
+            }
+        }
+        @else if $key == focus {
+            &:focus {
+                @include build-input-state($value);
+            }
+        }
+        @else if $key == disabled {
+            &:disabled {
+                @include build-input-state($value);
+            }
+        }
+    }
+}
+@mixin build-input-state($obj) {
+    @each $key, $value in $obj {
+        #{$key}: $value;
+    }
+}

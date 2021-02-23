@@ -1,0 +1,20 @@
+// =Sizing
+.w-off {
+    max-width: none;
+    min-width: none;
+    width: auto;
+}
+@each $name, $width in $width-scale {
+    .w-#{$name} {
+        width: $width;
+        min-width: $width;
+        max-width: $width;
+    }
+}
+@include for-sm {
+    .w-off-sm {
+        max-width: none;
+        min-width: none;
+        width: auto;
+    }
+}

@@ -1,0 +1,49 @@
+// =Reset
+html {
+    box-sizing: border-box;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+audio, canvas, video, progress, iframe {
+    display: block;
+    vertical-align: baseline;
+}
+fieldset, iframe, img {
+    border: 0;
+}
+embed, object, img, video {
+    max-width: 100%;
+    height: auto;
+}
+button,
+[type="submit"] {
+    -webkit-appearance: button;
+}
+[type="radio"],
+[type="checkbox"] {
+    vertical-align: middle;
+    position: relative;
+    bottom: 0.15em;
+    margin-right: 2px;
+}
+input[type="search"],
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance:none;
+}
+::-moz-focus-inner {
+    border: none;
+    padding: 0;
+}
