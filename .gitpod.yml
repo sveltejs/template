@@ -12,4 +12,4 @@ ports:
     onOpen: ignore
 vscode:
   extensions:
-    - svelte.svelte-vscode@102.1.0:lalX6WJBrpvP8QKZTiLUmQ==
+    - svelte.svelte-vscode
