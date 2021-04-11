@@ -5,6 +5,10 @@
 
 This is a project template for [Svelte](https://svelte.dev) apps. 
 
+## SvelteKit
+
+If you are looking for a SvelteKit example, please use https://github.com/gitpod-io/sveltekit-example.
+
 ## Special config for Gitpod to make rollup work
 
 Rollup needs to know how to reach the livereload endpoint. To configure that we need to do two things in our config:
