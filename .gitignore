@@ -1,4 +1,4 @@
-/node_modules/
-/public/build/
-
+node_modules
+package_lock.json
+public/build
 .DS_Store
