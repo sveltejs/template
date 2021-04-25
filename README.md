@@ -1,7 +1,7 @@
 
 # svelte app with Gitpod setup
 
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/gitpod-io/sveltejs-template)
+[![Gitpod ready-to-code](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/sveltejs-template)
 
 This is a project template for [Svelte](https://svelte.dev) apps. 
 
