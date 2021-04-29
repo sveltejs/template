@@ -5,7 +5,7 @@
   <script lang="ts">
   	export let name: string;
   </script>
- 
+
   As well as validating the code for CI.
   */
 
@@ -71,7 +71,7 @@ rollupConfig = rollupConfig.replace(
 // Add TypeScript
 rollupConfig = rollupConfig.replace(
   'commonjs(),',
-  'commonjs(),\n\t\ttypescript({\n\t\t\tsourceMap: !production,\n\t\t\tinlineSources: !production\n\t\t}),'
+  'commonjs(),\n\t\ttypescript({\n\t\t\tsourceMap: production,\n\t\t\tinlineSources: !production\n\t\t}),'
 );
 fs.writeFileSync(rollupConfigPath, rollupConfig)
 
