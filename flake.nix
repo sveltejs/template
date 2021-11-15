@@ -40,6 +40,20 @@
       };
     };
 
+   devShell = pkgs.mkShell {
+     buildInputs = let 
+       p = pkgs;
+     in
+     [
+       p.nodePackages.npm
+     ];
+
+     shellHook = ''
+          export NODE_PATH="${nodeDependencies}/lib/node_modules";
+          export PATH="${nodeDependencies}/bin:$PATH";
+        '';
+   };
+
     defaultPackage = packages.svelte-template;
   });
 }
