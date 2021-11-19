@@ -86,12 +86,13 @@ Install `vercel` if you haven't already:
 npm install -g vercel
 ```
 
-Then, from within your project folder:
+Then, from within your project folder run:
 
 ```bash
-cd public
-vercel deploy --name my-project
+vercel
 ```
+
+and follow the [project linking](https://vercel.com/docs/cli#commands/overview/project-linking) process.
 
 ### With [surge](https://surge.sh/)
 
