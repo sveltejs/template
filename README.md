@@ -41,7 +41,7 @@ If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommen
 
 ## Building and running in production mode
 
-To create an optimised version of the app:
+To create an optimized version of the app:
 
 ```bash
 npm run build
