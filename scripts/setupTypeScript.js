@@ -2,10 +2,10 @@
 
 /** This script modifies the project to support TS code in .svelte files like:
 
-  <script lang="ts">
+  <script lang='ts'>
   	export let name: string;
   </script>
- 
+
   As well as validating the code for CI.
   */
 
@@ -13,14 +13,14 @@
   rm -rf test-template template && git clone sveltejs/template test-template && node scripts/setupTypeScript.js test-template
 */
 
-const fs = require("fs")
-const path = require("path")
-const { argv } = require("process")
+const fs = require('fs')
+const path = require('path')
+const { argv } = require('process')
 
-const projectRoot = argv[2] || path.join(__dirname, "..")
+const projectRoot = argv[2] || path.join(__dirname, '..')
 
 // Add deps to pkg.json
-const packageJSON = JSON.parse(fs.readFileSync(path.join(projectRoot, "package.json"), "utf8"))
+const packageJSON = JSON.parse(fs.readFileSync(path.join(projectRoot, 'package.json'), 'utf8'))
 packageJSON.devDependencies = Object.assign(packageJSON.devDependencies, {
   "svelte-check": "^2.0.0",
   "svelte-preprocess": "^4.0.0",
@@ -36,23 +36,23 @@ packageJSON.scripts = Object.assign(packageJSON.scripts, {
 })
 
 // Write the package JSON
-fs.writeFileSync(path.join(projectRoot, "package.json"), JSON.stringify(packageJSON, null, "  "))
+fs.writeFileSync(path.join(projectRoot, 'package.json'), JSON.stringify(packageJSON, null, '  '))
 
 // mv src/main.js to main.ts - note, we need to edit rollup.config.js for this too
-const beforeMainJSPath = path.join(projectRoot, "src", "main.js")
-const afterMainTSPath = path.join(projectRoot, "src", "main.ts")
+const beforeMainJSPath = path.join(projectRoot, 'src', 'main.js')
+const afterMainTSPath = path.join(projectRoot, 'src', 'main.ts')
 fs.renameSync(beforeMainJSPath, afterMainTSPath)
 
 // Switch the app.svelte file to use TS
-const appSveltePath = path.join(projectRoot, "src", "App.svelte")
-let appFile = fs.readFileSync(appSveltePath, "utf8")
-appFile = appFile.replace("<script>", '<script lang="ts">')
-appFile = appFile.replace("export let name;", 'export let name: string;')
+const appSveltePath = path.join(projectRoot, 'src', 'App.svelte')
+let appFile = fs.readFileSync(appSveltePath, 'utf8')
+appFile = appFile.replace('<script>', '<script lang=\'ts\'>')
+appFile = appFile.replace('export let name;', 'export let name: string;')
 fs.writeFileSync(appSveltePath, appFile)
 
 // Edit rollup config
-const rollupConfigPath = path.join(projectRoot, "rollup.config.js")
-let rollupConfig = fs.readFileSync(rollupConfigPath, "utf8")
+const rollupConfigPath = path.join(projectRoot, 'rollup.config.js')
+let rollupConfig = fs.readFileSync(rollupConfigPath, 'utf8')
 
 // Edit imports
 rollupConfig = rollupConfig.replace(`'rollup-plugin-terser';`, `'rollup-plugin-terser';
@@ -82,7 +82,7 @@ const tsconfig = `{
   "include": ["src/**/*"],
   "exclude": ["node_modules/*", "__sapper__/*", "public/*"]
 }`
-const tsconfigPath =  path.join(projectRoot, "tsconfig.json")
+const tsconfigPath =  path.join(projectRoot, 'tsconfig.json')
 fs.writeFileSync(tsconfigPath, tsconfig)
 
 // Add global.d.ts
@@ -108,14 +108,14 @@ if (!argv[2]) {
 }
 
 // Adds the extension recommendation
-fs.mkdirSync(path.join(projectRoot, ".vscode"), { recursive: true })
-fs.writeFileSync(path.join(projectRoot, ".vscode", "extensions.json"), `{
+fs.mkdirSync(path.join(projectRoot, '.vscode'), { recursive: true })
+fs.writeFileSync(path.join(projectRoot, '.vscode', 'extensions.json'), `{
   "recommendations": ["svelte.svelte-vscode"]
 }
 `)
 
-console.log("Converted to TypeScript.")
+console.log('Converted to TypeScript.')
 
-if (fs.existsSync(path.join(projectRoot, "node_modules"))) {
-  console.log("\nYou will need to re-run your dependency manager to get started.")
+if (fs.existsSync(path.join(projectRoot, 'node_modules'))) {
+  console.log('\nYou will need to re-run your dependency manager to get started.')
 }
