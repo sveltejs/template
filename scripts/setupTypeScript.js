@@ -13,26 +13,29 @@
   rm -rf test-template template && git clone sveltejs/template test-template && node scripts/setupTypeScript.js test-template
 */
 
-const fs = require("fs")
-const path = require("path")
-const { argv } = require("process")
+import fs from "fs"
+import path from "path"
+import { argv } from "process"
+import url from 'url';
 
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const projectRoot = argv[2] || path.join(__dirname, "..")
 
 // Add deps to pkg.json
 const packageJSON = JSON.parse(fs.readFileSync(path.join(projectRoot, "package.json"), "utf8"))
 packageJSON.devDependencies = Object.assign(packageJSON.devDependencies, {
-  "svelte-check": "^2.0.0",
-  "svelte-preprocess": "^4.0.0",
-  "@rollup/plugin-typescript": "^8.0.0",
-  "typescript": "^4.0.0",
-  "tslib": "^2.0.0",
-  "@tsconfig/svelte": "^2.0.0"
+  "svelte-check": "^3.0.0",
+  "svelte-preprocess": "^5.0.0",
+  "@rollup/plugin-typescript": "^11.0.0",
+  "typescript": "^4.9.0",
+  "tslib": "^2.5.0",
+  "@tsconfig/svelte": "^3.0.0"
 })
 
 // Add script for checking
 packageJSON.scripts = Object.assign(packageJSON.scripts, {
-  "check": "svelte-check --tsconfig ./tsconfig.json"
+  "check": "svelte-check"
 })
 
 // Write the package JSON
@@ -55,7 +58,7 @@ const rollupConfigPath = path.join(projectRoot, "rollup.config.js")
 let rollupConfig = fs.readFileSync(rollupConfigPath, "utf8")
 
 // Edit imports
-rollupConfig = rollupConfig.replace(`'rollup-plugin-terser';`, `'rollup-plugin-terser';
+rollupConfig = rollupConfig.replace(`'rollup-plugin-css-only';`, `'rollup-plugin-css-only';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';`)
 
@@ -75,7 +78,7 @@ rollupConfig = rollupConfig.replace(
 );
 fs.writeFileSync(rollupConfigPath, rollupConfig)
 
-// Add TSConfig
+// Add svelte.config.js
 const tsconfig = `{
   "extends": "@tsconfig/svelte/tsconfig.json",
 
@@ -84,6 +87,16 @@ const tsconfig = `{
 }`
 const tsconfigPath =  path.join(projectRoot, "tsconfig.json")
 fs.writeFileSync(tsconfigPath, tsconfig)
+
+// Add TSConfig
+const svelteConfig = `import sveltePreprocess from 'svelte-preprocess';
+
+export default {
+  preprocess: sveltePreprocess()
+};
+`
+const svelteConfigPath =  path.join(projectRoot, "svelte.config.js")
+fs.writeFileSync(svelteConfigPath, svelteConfig)
 
 // Add global.d.ts
 const dtsPath =  path.join(projectRoot, "src", "global.d.ts")
