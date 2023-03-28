@@ -74,7 +74,7 @@ rollupConfig = rollupConfig.replace(
 // Add TypeScript
 rollupConfig = rollupConfig.replace(
   'commonjs(),',
-  'commonjs(),\n\t\ttypescript({\n\t\t\tsourceMap: !production,\n\t\t\tinlineSources: !production\n\t\t}),'
+  'commonjs(),\n\t\ttypescript({\n\t\t\tsourceMap: !production,\n\t\t\tinlineSources: !production,\n\t\t\trootDir: "./src"\n\t\t}),'
 );
 fs.writeFileSync(rollupConfigPath, rollupConfig)
 
