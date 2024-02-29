@@ -105,3 +105,18 @@ Then, from within your project folder:
 npm run build
 surge public my-project.surge.sh
 ```
+
+### With [Netlify](https://www.netlify.com/) CLI
+
+Install `netlify-cli` if you haven't already:
+
+```bash
+npm install -g netlify-cli
+```
+
+Then, from within your project folder:
+
+```bash
+npm run build
+netlify deploy --dir=public --prod
+```
